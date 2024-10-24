@@ -1,10 +1,11 @@
 import './App.css'
+import Description from './Description/Description'
 
 function App() {
   
   return (
     <>
-      <h1>goit-react-hw-02</h1>
+      <Description/>
     </>
   )
 }
