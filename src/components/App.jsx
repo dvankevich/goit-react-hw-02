@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import './App.css'
 import Description from './Description/Description'
+import Feedback from "./Feedback/Feedback";
+import Options from "./Options/Options";
 
 function App() {
   const [values, setValues] = useState({
@@ -57,13 +59,23 @@ function App() {
     }
   };
 
-  console.log(values);
+  // console.log(values);
+  // updateFeedback("good");
+  // updateFeedback("bad");
+  // updateFeedback("neutral");
+  // console.log(values);
+  // updateFeedback("reset");
+  // console.log(values);
+  
+  
   
 
   
   return (
     <>
-      <Description/>
+      <Description />
+      <Options update={updateFeedback} />
+      <Feedback values={values} />
     </>
   )
 }

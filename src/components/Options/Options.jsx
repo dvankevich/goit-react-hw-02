@@ -1,9 +1,12 @@
 import c from "./Options.module.css"
 
-const Options = () => {
+const Options = ({update}) => {
   return (
-    <div>
-      
+    <div className={c.options}>
+      <button onClick={() => update('good')}>Good</button>
+      <button onClick={() => update('neutral')}>Neutral</button>
+      <button onClick={() => update('bad')}>Bad</button>
+      <button onClick={() => update('reset')}>Reset</button>
     </div>
   )
 }
