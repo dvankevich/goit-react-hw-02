@@ -6,10 +6,18 @@ import Options from './Options/Options';
 import Notification from './Notification/Notification';
 
 function App() {
-  const [values, setValues] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
+  const [values, setValues] = useState(() => {
+    const savedValues = window.localStorage.getItem('saved-values');
+    console.log(savedValues, JSON.parse(savedValues));
+
+    if (savedValues !== null) {
+      return JSON.parse(savedValues);
+    }
+    return {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    };
   });
 
   const totalFeedback = values.good + values.neutral + values.bad;
@@ -63,7 +71,7 @@ function App() {
   }
 
   useEffect(() => {
-    // console.log("Clicks updated: ", values);
+    window.localStorage.setItem('saved-values', JSON.stringify(values));
   }, [values]);
 
   return (
