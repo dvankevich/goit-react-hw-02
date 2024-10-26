@@ -59,16 +59,9 @@ function App() {
     }
   };
 
-  // console.log(values);
-  // updateFeedback("good");
-  // updateFeedback("bad");
-  // updateFeedback("neutral");
-  // console.log(values);
-  // updateFeedback("reset");
-  // console.log(values);
-  
-  
-  
+  useEffect(() => {
+    console.log("Clicks updated: ", values);
+  }, [values]);
 
   
   return (
