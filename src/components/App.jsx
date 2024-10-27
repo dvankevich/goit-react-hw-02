@@ -21,52 +21,21 @@ function App() {
 
   const totalFeedback = values.good + values.neutral + values.bad;
 
-  function updateFeedback(feedbackType) {
-    const updateGood = () => {
-      setValues({
-        ...values,
-        good: values.good + 1,
-      });
-    };
-
-    const updateNeutral = () => {
-      setValues({
-        ...values,
-        neutral: values.neutral + 1,
-      });
-    };
-
-    const updateBad = () => {
-      setValues({
-        ...values,
-        bad: values.bad + 1,
-      });
-    };
-
-    const resetAll = () => {
+  function updateFeedbackRef(feedbackType) {
+    if (feedbackType === 'reset') {
       setValues({
         good: 0,
         neutral: 0,
         bad: 0,
       });
-    };
-
-    switch (feedbackType) {
-      case 'good':
-        updateGood();
-        break;
-      case 'bad':
-        updateBad();
-        break;
-      case 'neutral':
-        updateNeutral();
-        break;
-      case 'reset':
-        resetAll();
-        break;
-      default:
-        break;
+      return;
     }
+
+    setValues({
+      ...values,
+      [feedbackType]: values[feedbackType] + 1,
+    });
+    return;
   }
 
   useEffect(() => {
@@ -76,7 +45,7 @@ function App() {
   return (
     <>
       <Description />
-      <Options update={updateFeedback} total={totalFeedback} />
+      <Options update={updateFeedbackRef} total={totalFeedback} />
       {totalFeedback > 0 ? <Feedback values={values} /> : <Notification />}
     </>
   );
